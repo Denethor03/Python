@@ -9,20 +9,20 @@ if __name__ == "__main__":
     process_count = [2, 4, 8]
     results = {}
     
-    for p in process_count:
+    for proc in process_count:
         times = []
         
         for d in data_sizes:
             random_array = [random.randint(0,d) for _ in range(0,d)]
             start = time.time()
-            parallel_sort(random_array,p)
+            parallel_sort(random_array,proc)
             stop = time.time()
             times.append(stop-start)
 
-        results[p] = times
+        results[proc] = times
 
-    for p,times in results.items():
-        plt.plot(data_sizes, times, marker='o', label=f'{p} processes')
+    for proc,times in results.items():
+        plt.plot(data_sizes, times, marker='o', label=f'{proc} processes')
     
     plt.xlabel('Data size')
     plt.ylabel('Execution time in s')

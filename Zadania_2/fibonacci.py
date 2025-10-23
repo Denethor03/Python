@@ -17,6 +17,7 @@ class Fibonacci:
         
 
 if __name__ == "__main__":
-    fib = Fibonacci(10)
+    l = int(input("How many numbers from sequence?: "))
+    fib = Fibonacci(l)
     for i in fib:
         print(i)
