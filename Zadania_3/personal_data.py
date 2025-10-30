@@ -13,7 +13,7 @@ class dataclass:
         "\nAddress: "+self.address+"\nPostal code: "+self.postalCode+
         "\nPesel: "+self.pesel)
     def write_Json(self):
-        with open("peronalData",'w') as f:
+        with open("personalData",'w') as f:
             json.dump(self.__dict__,f)
     def read_Json(self,file):
         with open(file,'r') as f:
@@ -22,5 +22,5 @@ class dataclass:
 
 if __name__ == "__main__":
     person1 = dataclass()
-    person1.read_Json("peronalData")
+    person1.read_Json("personalData")
     print(person1)

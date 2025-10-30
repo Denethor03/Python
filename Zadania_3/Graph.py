@@ -1,12 +1,17 @@
 class Graph:
     def __init__(self,size):
         self.size = size
+        self.x_cords = [None] * self.size
+        self.y_cords = [None] * self.size
         self.vertexData = ['']*size
         self.edgesWeights = [[0]*size for _ in range(size)]
+
         
-    def addVertex(self,index,data):
+    def addVertex(self,index,data,x,y):
         if index < self.size:
             self.vertexData[index] = data
+            self.x_cords[index] = x
+            self.y_cords[index] = y
 
     def connectVertexes(self,u,v,weight):
         if u < self.size and v < self.size:
@@ -54,19 +59,3 @@ class Graph:
         return path
 
 
-if __name__ == "__main__":
-    g1 = Graph(5)
-    g1.addVertex(0,"A")
-    g1.addVertex(1,"B")
-    g1.addVertex(2,"C")
-    g1.addVertex(3,"D")
-    g1.addVertex(4,"E")
-    g1.connectVertexes(0,1,5)
-    g1.connectVertexes(0,2,2)
-    g1.connectVertexes(1,3,4)
-    g1.connectVertexes(1,4,1)
-    g1.connectVertexes(3,4,7)
-    g1.connectVertexes(2,3,3)
-    distances, predacessors = g1.Dijkstra("A")
-    print(distances)
-    print(g1.getPath('A','E',predacessors))
