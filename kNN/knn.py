@@ -8,13 +8,13 @@ def kNN(point,data,k):
 
     dataDist.sort(key = lambda x : x[-1])
     
-    classes = [x[2] for x in dataDist[:k]]
+    classes = [x[-2] for x in dataDist[:k]]
 
     return max(set(classes), key = classes.count), dataDist[k-1][-1]
         
 
 def distance(p1,p2):
-    return ((p1[0]-p2[0])**2+(p1[1]-p2[1])**2)**0.5
+    return sum((a-b)**2 for a,b in zip(p1,p2))**0.5 # zip returns pairs of elements
 
 def generate_data(n_per_class=50):
     data = []
