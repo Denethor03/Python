@@ -11,11 +11,12 @@ if __name__ == "__main__":
     
     digits_data = load_digits()
 
-    data_sizes = list(range(10, len(digits_data.data), 50))
+    data_sizes = list(range(10, len(digits_data.data), 150))
     my_times = []
     build_in_times = []
     K = 5
     print(f"Testing with k={K} neighbors")
+    
     for data_size in data_sizes:
         
         X = digits_data.data[:data_size] # coordinates/features
@@ -41,6 +42,7 @@ if __name__ == "__main__":
         my_time = time.time() - start
         my_times.append(my_time)
         my_accuracy = my_correct / len(test)
+
         
         #==== Built-in kNN ====
         build_in_correct = 0
@@ -59,7 +61,7 @@ if __name__ == "__main__":
         print(f"Data size: {data_size} | My kNN -> time: {my_time:.4f}s, accuracy: {my_accuracy:.4f} | "
               f"Sklearn kNN -> time: {build_in_time:.4f}s, accuracy: {build_in_accurracy:.4f}")
         
-plt.plot(data_sizes, my_times, label="My kNN", marker='o')
+plt.plot(data_sizes, my_times, label="Our kNN", marker='o')
 plt.plot(data_sizes, build_in_times, label="Sklearn kNN", marker='o')
 plt.xlabel("Data Size")
 plt.ylabel("Time (seconds)")
@@ -67,3 +69,4 @@ plt.title(f"Performance Comparison of kNN with k={K}")
 plt.legend()
 plt.grid(True)
 plt.show()
+

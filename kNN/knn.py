@@ -4,7 +4,7 @@ import random
 
 def kNN(point,data,k):
     
-    dataDist = [d + [distance(point,d)] for d in data]
+    dataDist = [d + [distance(point,d[:-1])] for d in data]
 
     dataDist.sort(key = lambda x : x[-1])
     
@@ -14,7 +14,7 @@ def kNN(point,data,k):
         
 
 def distance(p1,p2):
-    return sum((a-b)**2 for a,b in zip(p1,p2))**0.5 # zip returns pairs of elements
+    return sum((a-b)**2 for a,b in zip(p1,p2))**0.5 
 
 def generate_data(n_per_class=50):
     data = []
