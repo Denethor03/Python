@@ -1,5 +1,5 @@
 from knn import kNN as my_knn
-from tensorflow.keras.datasets import mnist
+from keras.datasets import mnist
 from sklearn.model_selection import train_test_split
 import time
 from sklearn.neighbors import KNeighborsClassifier
